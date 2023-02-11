@@ -19,6 +19,28 @@ export default function Posts() {
 
 function Post(props) {
   const [salvo, setSalvo] = useState("bookmark-outline");  
+  const [like, setLike] = useState("heart-outline");
+  const [numeroCurtidas, setNumeroCurtidas] = useState(10000);
+  const [cor, setCor] = useState("white");
+
+  function deuLike() {
+    if(like === "heart-outline"){
+      setLike("heart")
+      setNumeroCurtidas(numeroCurtidas + 1);
+      setCor("vermelho");
+    }else {
+      setLike("heart-outline")
+      setNumeroCurtidas(numeroCurtidas -1);
+      setCor("white");
+    }
+  }
+  function likeImagem() {
+    if(like ==="heart-outline"){
+      setLike("heart");
+      setNumeroCurtidas(numeroCurtidas + 1)
+      setCor("vermelho");
+;    }
+  }
 
   function salvar() {
     if(salvo === "bookmark-outline") {
@@ -27,6 +49,7 @@ function Post(props) {
       setSalvo("bookmark-outline");
     }
   }
+
 
 
   console.log(props);
@@ -43,13 +66,13 @@ function Post(props) {
       </div>
 
       <div className="conteudo">
-        <img src={props.imagemConteudo} alt={props.nomeConteudo}/>
+        <img src={props.imagemConteudo} alt={props.nomeConteudo} onClick={likeImagem}/>
       </div>
 
       <div className="fundo">
         <div className="acoes">
           <div>
-            <ion-icon name="heart-outline"></ion-icon>
+            <ion-icon class={cor} onClick={deuLike} name={like}></ion-icon>
             <ion-icon name="chatbubble-outline"></ion-icon>
             <ion-icon name="paper-plane-outline"></ion-icon>
           </div>
@@ -61,7 +84,7 @@ function Post(props) {
         <div className="curtidas">
           <img src={props.imagemCurtidas} alt={props.nomeCurtidas}/>
           <div className="texto">
-            Curtido por <strong>{props.nomeCurtidas}</strong> e <strong>outras 101.523 pessoas</strong>
+            Curtido por <strong>{props.nomeCurtidas}</strong> e <strong>outras {numeroCurtidas} pessoas</strong>
           </div>
         </div>
       </div>
