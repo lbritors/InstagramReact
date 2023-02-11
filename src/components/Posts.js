@@ -1,5 +1,8 @@
+import { useState } from "react"
+
+
 export default function Posts() {
-    
+  
     const post = [
       {imagemUsuario:"assets/img/adorable_animals.svg", nomeUsuario: "adorable_animals", imagemConteudo:"assets/img/IMG_20190924_145258.jpg", nomeConteudo:"yorkshire", imagemCurtidas:"assets/img/barked.svg", nomeCurtidas:"barked"},
       {imagemUsuario:"assets/img/meowed.svg", nomeUsuario:"meowed", imagemConteudo:"assets/img/gato-telefone.svg", nomeConteudo:"gato-telefone", imagemCurtidas: "assets/img/respondeai.svg", nomeCurtidas: "respondeai"},
@@ -15,6 +18,18 @@ export default function Posts() {
 }
 
 function Post(props) {
+  const [salvo, setSalvo] = useState("bookmark-outline");  
+
+  function salvar() {
+    if(salvo === "bookmark-outline") {
+      setSalvo("bookmark");
+    } else {
+      setSalvo("bookmark-outline");
+    }
+  }
+
+
+  console.log(props);
   return (
     <div className="post">
       <div className="topo">
@@ -39,7 +54,7 @@ function Post(props) {
             <ion-icon name="paper-plane-outline"></ion-icon>
           </div>
           <div>
-            <ion-icon name="bookmark-outline"></ion-icon>
+            <ion-icon  onClick={salvar} name={salvo}></ion-icon>
           </div>
         </div>
 
