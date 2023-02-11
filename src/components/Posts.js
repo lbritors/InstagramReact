@@ -8,14 +8,13 @@ export default function Posts() {
     
     return (
         <div className="posts">
-         {post.map((p) => <Post imagemUsuario={p.imagemUsuario} nomeUsuario={p.nomeUsuario} imagemConteudo={p.imagemConteudo} nomeConteudo={p.nomeConteudo} imagemCurtidas={p.imagemCurtidas} nomeCurtidas={p.nomeCurtidas}/>)}       
+         {post.map((p) => <Post key={p.nomeConteudo} imagemUsuario={p.imagemUsuario} nomeUsuario={p.nomeUsuario} imagemConteudo={p.imagemConteudo} nomeConteudo={p.nomeConteudo} imagemCurtidas={p.imagemCurtidas} nomeCurtidas={p.nomeCurtidas}/>)}       
         </div>
      
     )
 }
 
 function Post(props) {
-  console.log(props);
   return (
     <div className="post">
       <div className="topo">
@@ -23,7 +22,7 @@ function Post(props) {
           <img src={props.imagemUsuario} alt={props.nomeUsuario}/>
           {props.nomeUsuario}
         </div>
-        <div class="acoes">
+        <div className="acoes">
           <ion-icon name="ellipsis-horizontal"></ion-icon>
         </div>
       </div>

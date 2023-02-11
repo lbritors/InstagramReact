@@ -15,7 +15,7 @@ export default function Sugestoes() {
           Sugestões para você
           <div>Ver tudo</div>
         </div>
-        {sugestao.map((sg) => <Sugestao imagem={sg.imagem} nome={sg.nome}/>)}
+        {sugestao.map((sg) => <Sugestao key={sg.nome} imagem={sg.imagem} nome={sg.nome}/>)}
       </div>
     )
 }
