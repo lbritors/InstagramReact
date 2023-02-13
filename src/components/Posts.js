@@ -54,7 +54,7 @@ function Post(props) {
 
   console.log(props);
   return (
-    <div className="post">
+    <div data-test="post" className="post">
       <div className="topo">
         <div className="usuario">
           <img src={props.imagemUsuario} alt={props.nomeUsuario}/>
@@ -66,25 +66,26 @@ function Post(props) {
       </div>
 
       <div className="conteudo">
-        <img src={props.imagemConteudo} alt={props.nomeConteudo} onClick={likeImagem}/>
+        <ion-icon name="heart"></ion-icon>
+        <img data-test="post-image" src={props.imagemConteudo} alt={props.nomeConteudo} onDoubleClick={likeImagem}/>
       </div>
 
       <div className="fundo">
         <div className="acoes">
           <div>
-            <ion-icon class={cor} onClick={deuLike} name={like}></ion-icon>
+            <ion-icon date-test="like-post" class={cor} onClick={deuLike} name={like}></ion-icon>
             <ion-icon name="chatbubble-outline"></ion-icon>
             <ion-icon name="paper-plane-outline"></ion-icon>
           </div>
           <div>
-            <ion-icon  onClick={salvar} name={salvo}></ion-icon>
+            <ion-icon  date-test="save-post" onClick={salvar} name={salvo}></ion-icon>
           </div>
         </div>
 
         <div className="curtidas">
           <img src={props.imagemCurtidas} alt={props.nomeCurtidas}/>
           <div className="texto">
-            Curtido por <strong>{props.nomeCurtidas}</strong> e <strong>outras {numeroCurtidas} pessoas</strong>
+            Curtido por <strong>{props.nomeCurtidas}</strong> e <strong data-test="likes-number">outras {numeroCurtidas} pessoas</strong>
           </div>
         </div>
       </div>

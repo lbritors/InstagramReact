@@ -21,19 +21,22 @@ export default function Usuario() {
   
   return (
     <div className="usuario">
-      <img onClick ={mudaFoto} src={foto} alt="imagem de perfil"/>
+      <img  data-test="profile-image" onClick ={mudaFoto} src={foto} alt="imagem de perfil"/>
         <div className="texto">
           <span>
-            <strong>{nome}</strong>
-             <ion-icon onClick={clicou} name="pencil"></ion-icon>
+            <UserName nome={nome}/>
+            <ion-icon data-test="edit-name" onClick={clicou} name="pencil"></ion-icon>
           </span>
        </div>
     </div>
     )
 }
 
-// function FotoUsuario() {
-//   return (
-
-//   )
-// }
+function UserName(props) {
+  console.log(props);
+  return (
+   <>
+    <strong data-test="name">{props.nome}</strong>
+   </>  
+  )
+}
