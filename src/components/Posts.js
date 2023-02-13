@@ -4,14 +4,14 @@ import { useState } from "react"
 export default function Posts() {
   
     const post = [
-      {imagemUsuario:"assets/img/adorable_animals.svg", nomeUsuario: "adorable_animals", imagemConteudo:"assets/img/IMG_20190924_145258.jpg", nomeConteudo:"yorkshire", imagemCurtidas:"assets/img/barked.svg", nomeCurtidas:"barked"},
-      {imagemUsuario:"assets/img/meowed.svg", nomeUsuario:"meowed", imagemConteudo:"assets/img/gato-telefone.svg", nomeConteudo:"gato-telefone", imagemCurtidas: "assets/img/respondeai.svg", nomeCurtidas: "respondeai"},
-      {imagemUsuario:"assets/img/barked.svg", nomeUsuario:"barked", imagemConteudo:"assets/img/dog.svg", nomeConteudo:"dog" , imagemCurtidas: "assets/img/adorable_animals.svg", nomeCurtidas: "adorable_animals"}
+      {imagemUsuario:"assets/img/adorable_animals.svg", nomeUsuario: "adorable_animals", imagemConteudo:"assets/img/IMG_20190924_145258.jpg", nomeConteudo:"yorkshire", imagemCurtidas:"assets/img/barked.svg", nomeCurtidas:"barked", curtidas: 7073},
+      {imagemUsuario:"assets/img/meowed.svg", nomeUsuario:"meowed", imagemConteudo:"assets/img/gato-telefone.svg", nomeConteudo:"gato-telefone", imagemCurtidas: "assets/img/respondeai.svg", nomeCurtidas: "respondeai", curtidas: 8904},
+      {imagemUsuario:"assets/img/barked.svg", nomeUsuario:"barked", imagemConteudo:"assets/img/dog.svg", nomeConteudo:"dog" , imagemCurtidas: "assets/img/adorable_animals.svg", nomeCurtidas: "adorable_animals", curtidas: 7990}
     ]
     
     return (
         <div className="posts">
-         {post.map((p) => <Post key={p.nomeConteudo} imagemUsuario={p.imagemUsuario} nomeUsuario={p.nomeUsuario} imagemConteudo={p.imagemConteudo} nomeConteudo={p.nomeConteudo} imagemCurtidas={p.imagemCurtidas} nomeCurtidas={p.nomeCurtidas}/>)}       
+         {post.map((p) => <Post key={p.nomeConteudo} imagemUsuario={p.imagemUsuario} nomeUsuario={p.nomeUsuario} imagemConteudo={p.imagemConteudo} nomeConteudo={p.nomeConteudo} imagemCurtidas={p.imagemCurtidas} nomeCurtidas={p.nomeCurtidas} curtidas={p.curtidas}/>)}       
         </div>
      
     )
@@ -20,7 +20,7 @@ export default function Posts() {
 function Post(props) {
   const [salvo, setSalvo] = useState("bookmark-outline");  
   const [like, setLike] = useState("heart-outline");
-  const [numeroCurtidas, setNumeroCurtidas] = useState(10000);
+  const [numeroCurtidas, setNumeroCurtidas] = useState(props.curtidas);
   const [cor, setCor] = useState("white");
 
   function deuLike() {
@@ -39,7 +39,8 @@ function Post(props) {
       setLike("heart");
       setNumeroCurtidas(numeroCurtidas + 1)
       setCor("vermelho");
-;    }
+      
+   }
   }
 
   function salvar() {
@@ -66,7 +67,6 @@ function Post(props) {
       </div>
 
       <div className="conteudo">
-        <ion-icon name="heart"></ion-icon>
         <img data-test="post-image" src={props.imagemConteudo} alt={props.nomeConteudo} onDoubleClick={likeImagem}/>
       </div>
 

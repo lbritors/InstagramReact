@@ -178,22 +178,9 @@ body {
 
 .post .conteudo img {
   width: 100%;
-  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-.post .conteudo ion-icon {
-  position: absolute;
-  font-size: 90px;
-  color:white;
-  z-index: 1;
-  animation: coracao 0.3s;
-}
-@keyframes coracao {
-  20% {font-size: 20px; top:70%; left: auto}
-  100% {font-size: 100px; top:70%; left:40%}
-  
 }
 
 
